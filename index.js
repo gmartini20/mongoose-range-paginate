@@ -20,6 +20,10 @@ module.exports = function paginate(query, opts) {
   }
 
   query.sort(opts.sort + ' -_id')
+  
+  if (opts.skip) {
+    query.skip(parseInt(opts.skip))
+  }
 
   if (!opts.startId) return query
 
